@@ -1,72 +1,83 @@
-import styled from 'styled-components';
-import NxWelcome from './nx-welcome';
-
-import { Route, Link } from 'react-router-dom';
-import { Formalizer } from '@formalizer/core';
-
-const StyledApp = styled.div`
-  // Your style here
-`;
+import { xFieldMap } from '@formalizer/react-fields';
+import { Field, Form } from '@formalizer/react-form';
 
 declare const window: any;
 
-window.MyFormalizer = new Formalizer({
-  fields: [
-    { name: 'first_name', type: 'string' },
-    {
-      name: 'address',
-      type: 'object',
-      fields: [
-        { name: 'street_name', type: 'string' },
-        { name: 'zipcode', type: 'string' },
-      ],
-    },
-  ],
-});
+const fields = [
+  {
+    name: 'first_name',
+    type: 'text',
+  },
+  { name: 'last_name', type: 'text' },
+  { name: 'age', type: 'number' },
+  { name: 'email', type: 'email' },
+  {
+    name: 'address',
+    type: 'json',
+    fields: [
+      { name: 'street_name', type: 'text' },
+      { name: 'zipcode', type: 'text' },
+      { name: 'city', type: 'text' },
+    ],
+  },
+];
 
 export function App() {
-  console.log(window.MyFormalizer);
   return (
-    <StyledApp>
-      <NxWelcome title="testing-ground" />
-
-      {/* START: routes */}
-      {/* These routes and navigation have been generated for you */}
-      {/* Feel free to move and update them to fit your needs */}
-      <br />
-      <hr />
-      <br />
-      <div role="navigation">
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/page-2">Page 2</Link>
-          </li>
-        </ul>
-      </div>
-      <Route
-        path="/"
-        exact
-        render={() => (
-          <div>
-            This is the generated root route.{' '}
-            <Link to="/page-2">Click here for page 2.</Link>
-          </div>
-        )}
+    <div>
+      <Form
+        xFieldMap={xFieldMap}
+        autoGenerate
+        fields={fields}
+        value={{ first_name: 'Igor' }}
       />
-      <Route
-        path="/page-2"
-        exact
-        render={() => (
-          <div>
-            <Link to="/">Click here to go back to root page.</Link>
-          </div>
-        )}
-      />
-      {/* END: routes */}
-    </StyledApp>
+      <Form fields={fields} value={{ first_name: 'Igor' }}>
+        {({ formalizer }) => {
+          window.A = formalizer;
+          return (
+            <>
+              <Field name="first_name">
+                {({ props, field }) => {
+                  console.log('re-render first_name');
+                  window.C = field;
+                  return <input {...props} />;
+                }}
+              </Field>
+              <Field name="last_name">
+                {({ props }) => {
+                  return <input {...props} />;
+                }}
+              </Field>
+              <Field name="age">
+                {({ props }) => {
+                  return <input {...props} />;
+                }}
+              </Field>
+              <Field name="email">
+                {({ props }) => {
+                  return <input {...props} />;
+                }}
+              </Field>
+              <Field name="address.street_name">
+                {({ props }) => {
+                  return <input {...props} />;
+                }}
+              </Field>
+              <Field name="address.zipcode">
+                {({ props }) => {
+                  return <input {...props} />;
+                }}
+              </Field>
+              <Field name="address.city">
+                {({ props }) => {
+                  return <input {...props} />;
+                }}
+              </Field>
+            </>
+          );
+        }}
+      </Form>
+    </div>
   );
 }
 

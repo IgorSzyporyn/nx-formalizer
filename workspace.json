@@ -2,6 +2,8 @@
   "version": 2,
   "projects": {
     "core": "packages/core",
+    "react-fields": "packages/react-fields",
+    "react-form": "packages/react-form",
     "testing-ground": "packages/testing-ground",
     "testing-ground-e2e": "packages/testing-ground-e2e"
   }
