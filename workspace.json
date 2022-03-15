@@ -1,4 +1,8 @@
 {
   "version": 2,
-  "projects": {}
+  "projects": {
+    "core": "packages/core",
+    "testing-ground": "packages/testing-ground",
+    "testing-ground-e2e": "packages/testing-ground-e2e"
+  }
 }

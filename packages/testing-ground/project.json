@@ -1,0 +1,73 @@
+{
+  "root": "packages/testing-ground",
+  "sourceRoot": "packages/testing-ground/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/packages/testing-ground",
+        "index": "packages/testing-ground/src/index.html",
+        "baseHref": "/",
+        "main": "packages/testing-ground/src/main.tsx",
+        "polyfills": "packages/testing-ground/src/polyfills.ts",
+        "tsConfig": "packages/testing-ground/tsconfig.app.json",
+        "assets": [
+          "packages/testing-ground/src/favicon.ico",
+          "packages/testing-ground/src/assets"
+        ],
+        "styles": [],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "packages/testing-ground/src/environments/environment.ts",
+              "with": "packages/testing-ground/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "testing-ground:build",
+        "hmr": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "testing-ground:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/testing-ground/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/testing-ground"],
+      "options": {
+        "jestConfig": "packages/testing-ground/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
