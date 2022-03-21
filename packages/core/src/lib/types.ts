@@ -1,6 +1,6 @@
 export type ExtraProps = Record<string, unknown>;
 
-export interface IFormalizerOptions<E = ExtraProps> {
+export interface FormalizerOptions<E = ExtraProps> {
   fields?: Array<IFieldProps<E>>;
   xFieldMap?: IXFieldMap<E> | Array<IXFieldMap<E>>;
   registerExtraProps?: RegisterExtraProps<E>;
@@ -15,16 +15,42 @@ export interface IXFieldMap<E = ExtraProps> {
   [key: string]: IXFieldProps<E>;
 }
 
-export type RegisterExtraProps<E> = (xField: IXFieldProps<E>) => E;
+export interface IFieldProps<E = ExtraProps> {
+  type: string;
+  name: string;
+  fields?: Array<IFieldProps<E>>;
 
-export type SafeXFieldProps<E = ExtraProps> = Pick<
-  IXFieldProps<E>,
-  Exclude<keyof IXFieldProps<E>, 'addListener'>
->;
+  value?: ValueTypes;
+  emptyValue?: ValueTypes;
+  defaultValue?: ValueTypes;
+  trueValue?: ValueTypes;
+  falseValue?: ValueTypes;
 
-export type SafeXFieldKeys<E = ExtraProps> = keyof SafeXFieldProps<E>;
+  nullable?: boolean;
+  dependencies?: IFieldDependency[];
+  validation?: IValidationSchema;
+  validationMessages?: IValidationMessages;
+  extraProps?: E;
+
+  title?: string;
+  hidden?: boolean;
+  description?: string;
+  disabled?: boolean;
+  format?: string;
+  columns?: number;
+  options?: IFieldOption[];
+  inline?: boolean;
+}
+
+export interface IFieldOption {
+  value?: ValueTypes;
+  title: string;
+  name: string;
+}
 
 export type FieldKeys = keyof IFieldProps;
+
+export type RegisterExtraProps<E> = (xField: IXFieldProps<E>) => E;
 
 export interface IOnXFieldChangeProps<E = ExtraProps> {
   propName: SafeXFieldKeys<E>;
@@ -104,27 +130,17 @@ export interface IOnObjectValueDeleteProps {
 
 export type OnObjectValueDelete = (props: IOnObjectValueDeleteProps) => void;
 
-export interface IFieldProps<E = ExtraProps> {
-  type: string;
-  name: string;
-  value?: ValueTypes;
-  emptyValue?: ValueTypes;
-  defaultValue?: ValueTypes;
-  fields?: Array<IFieldProps<E>>;
-  dependencies?: IFieldDependency[];
-  title?: string;
-  description?: string;
-  disabled?: boolean;
-  nullable?: boolean;
-  extraProps?: E;
-  validation?: IValidationSchema;
-  validationMessages?: IValidationMessages;
-}
-
-export type IFieldPropPicks<E> = Pick<
+export type IFieldPropPicks<E = ExtraProps> = Pick<
   IFieldProps<E>,
   Exclude<keyof IFieldProps<E>, 'name' | 'fields'>
 >;
+
+export type SafeXFieldProps<E = ExtraProps> = Pick<
+  IXFieldProps<E>,
+  Exclude<keyof IXFieldProps<E>, 'addListener'>
+>;
+
+export type SafeXFieldKeys<E = ExtraProps> = keyof SafeXFieldProps<E>;
 
 export interface IXFieldProps<E = ExtraProps> extends IFieldPropPicks<E> {
   name?: string;

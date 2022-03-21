@@ -69,6 +69,10 @@ export function fieldToXField<E = ExtraProps>({
   let xField: IXFieldProps<E> = {
     ...xFieldMap[field.type],
     ...fieldProps,
+    extraProps: deepmerge(
+      xFieldMap[field.type].extraProps || {},
+      fieldProps.extraProps || {}
+    ) as E,
     $id,
   };
 
@@ -76,8 +80,7 @@ export function fieldToXField<E = ExtraProps>({
   // need to give that a chance to return some additional
   // extraProps to extend with
   if (registerExtraProps) {
-    const extraProps = registerExtraProps(xField);
-    xField.extraProps = deepmerge(xField.extraProps, extraProps);
+    xField.extraProps = registerExtraProps(xField);
   }
 
   // Empower xField with the ability for added

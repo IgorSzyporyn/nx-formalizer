@@ -1,0 +1,6 @@
+Removing value from object item gives max call stack
+Check up on intial value
+Deep nested object gets max call stack
+
+Create angular-form package
+Create vue-form package

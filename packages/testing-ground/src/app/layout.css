@@ -1,0 +1,25 @@
+.FRX-Field {
+  display: flex;
+  flex-direction: column;
+}
+
+.FRX-Field--inline {
+  flex-direction: row;
+}
+
+.FRX-Field__label {
+}
+
+.FRX-Field__content {
+  display: flex;
+  flex-direction: column;
+}
+
+.FRX-Field__input {
+}
+
+.FRX-Field__description {
+}
+
+.FRX-Field__error {
+}

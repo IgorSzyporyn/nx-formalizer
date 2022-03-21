@@ -23,7 +23,9 @@ export const getXFieldProxyHandler = <U>(onChange?: OnXFieldChange<U>) => {
                 field.value = value[field.name];
               }
             } else {
-              field.value = undefined;
+              // field.value = undefined will go max call stack
+              // but seems to work without setting to undefined
+              // field.value = undefined;
             }
           });
         }
@@ -36,7 +38,10 @@ export const getXFieldProxyHandler = <U>(onChange?: OnXFieldChange<U>) => {
                 field.value = value[index];
               }
             } else {
-              field.value = undefined;
+              // @todo need to remove correct indexed value in array
+              //       and set to undefined if nothing left in array
+              //       - field.value = undefined will go max call stack
+              // field.value = undefined;
             }
           });
         }

@@ -1,0 +1,154 @@
+.FRX-Field {
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 16px;
+  color: #2c2c2c;
+}
+
+.FRX-Field.FRX--disabled {
+  opacity: 0.6;
+}
+
+.FRX-Field-RadioItem {
+  margin-bottom: 0;
+}
+
+.FRX-Form > .FRX-Field-Array,
+.FRX-Form > .FRX-Field-Object {
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+.FRX-Field .FRX-Field-Array,
+.FRX-Field .FRX-Field-Object {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.FRX-Field + .FRX-Field-Array:not(.FRX-Form > .FRX-Field-Array),
+.FRX-Field + .FRX-Field-Object:not(.FRX-Form > .FRX-Field-Object) {
+  margin-top: 8px;
+}
+
+.FRX-Field-Array + .FRX-Field-Array,
+.FRX-Field-Object + .FRX-Field-Array,
+.FRX-Field-Array + .FRX-Field-Object,
+.FRX-Field-Object + .FRX-Field-Object {
+  margin-top: 0;
+}
+
+.FRX-Field .FRX-Field-Array:first-of-type,
+.FRX-Field .FRX-Field-Object:first-of-type {
+  margin-top: 0;
+}
+
+.FRX-Field .FRX-Field:last-of-type {
+  margin-bottom: 0;
+}
+
+.FRX-Field .FRX-Field:first-of-type {
+  margin-top: 0;
+}
+
+.FRX-Field__label {
+  font-size: 13px;
+  line-height: 14px;
+  margin-bottom: 4px;
+}
+
+.FRX-Field-Array__label,
+.FRX-Field-Object__label {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.FRX-Field .FRX-Field-Array .FRX-Field-Array__label,
+.FRX-Field .FRX-Field-Object .FRX-Field-Object__label {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.FRX-Field__content {
+  display: flex;
+  flex-direction: column;
+}
+
+.FRX-Field-Boolean__content,
+.FRX-Field-RadioItem__content {
+  flex-direction: row;
+  align-items: center;
+}
+
+.FRX-Field-Grid__inner .FRX-Field {
+  margin-bottom: 0;
+}
+
+.FRX-Field__description {
+  font-size: 11px;
+  color: #808080;
+  line-height: 14px;
+  margin-top: -2px;
+  margin-bottom: 4px;
+}
+
+.FRX-Field-Boolean__description,
+.FRX-Field-RadioItem__description {
+  font-size: 13px;
+  color: #2c2c2c;
+}
+
+.FRX-Field-Boolean__label,
+.FRX-Field-RadioItem__label {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+  margin-left: 6px;
+  position: relative;
+  top: 1px;
+  font-size: 11px;
+  color: #808080;
+  font-weight: 500;
+}
+
+.FRX-Field-Array__description,
+.FRX-Field-Object__description {
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+
+.FRX-Field__input {
+  font-family: 'Roboto', sans-serif;
+  border: 1px solid #636363;
+  border-radius: 5px;
+  height: 42px;
+  color: #2c2c2c;
+  font-size: 15px;
+  padding: 0 12px;
+  margin: 0;
+}
+
+.FRX-Field-Boolean__input,
+.FRX-Field-RadioItem__input {
+  height: 32px;
+}
+
+.FRX-Field.FRX--error .FRX-Field__label {
+  color: #ff0000;
+}
+
+.FRX-Field.FRX--error .FRX-Field__description {
+  color: #ff0000;
+}
+
+.FRX-Field.FRX--error .FRX-Field__input {
+  color: #ff0000;
+  border-color: #ff0000;
+}
+
+.FRX-Field__error {
+  color: #ff0000;
+  font-size: 10px;
+  margin-top: 2px;
+}

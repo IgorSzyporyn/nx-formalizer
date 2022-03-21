@@ -16,8 +16,9 @@
     "baseUrl": ".",
     "paths": {
       "@formalizer/core": ["packages/core/src/index.ts"],
-      "@formalizer/react-fields": ["packages/react-fields/src/index.ts"],
-      "@formalizer/react-form": ["packages/react-form/src/index.ts"]
+      "@formalizer/designer": ["packages/designer/src/index.ts"],
+      "@formalizer/react-form": ["packages/react-form/src/index.ts"],
+      "@formalizer/ui": ["packages/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,4 +1,4 @@
-import { IXFieldMap } from './types'
+import { IXFieldMap } from './types';
 
 export const xFieldMap: IXFieldMap = {
   string: {
@@ -26,4 +26,4 @@ export const xFieldMap: IXFieldMap = {
     valueType: 'array',
     extraProps: {},
   },
-}
+};

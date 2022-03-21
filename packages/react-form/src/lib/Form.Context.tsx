@@ -1,15 +1,20 @@
 import React from 'react';
-import { xFieldMap } from './xFields';
+import { Formalizer } from '@formalizer/core';
 
-import type { IXFieldMap, IXFieldRefMap } from '@formalizer/core';
-import type { IFormFieldExtraProps } from './types';
+import type {
+  FieldComponentMap,
+  FieldExtraProps,
+  FieldInputPropsMap,
+} from './types';
 
 export type FormContextType = {
-  xFieldMap: IXFieldMap<IFormFieldExtraProps>;
-  xFieldRefMap: IXFieldRefMap<IFormFieldExtraProps>;
+  formalizer: Formalizer<FieldExtraProps>;
+  inputPropsMap: FieldInputPropsMap;
+  componentMap: FieldComponentMap;
 };
 
 export const FormContext = React.createContext<FormContextType>({
-  xFieldMap: xFieldMap,
-  xFieldRefMap: {},
+  formalizer: new Formalizer(),
+  inputPropsMap: {},
+  componentMap: {},
 });

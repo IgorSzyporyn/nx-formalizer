@@ -1,0 +1,43 @@
+{
+  "root": "packages/designer",
+  "sourceRoot": "packages/designer/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/designer",
+        "tsConfig": "packages/designer/tsconfig.lib.json",
+        "project": "packages/designer/package.json",
+        "entryFile": "packages/designer/src/index.ts",
+        "external": ["react/jsx-runtime"],
+        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "compiler": "babel",
+        "assets": [
+          {
+            "glob": "packages/designer/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/designer/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/designer"],
+      "options": {
+        "jestConfig": "packages/designer/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  }
+}
